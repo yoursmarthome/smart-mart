@@ -24,8 +24,9 @@ const SingleProduct = (props) => {
  */
 const mapState = (state, ownProps) => {
   const productId = Number(ownProps.match.params.id)
+  console.log(productId)
   return {
-    product: state.products.find(product => product.id = productId)
+    product: state.products.find(product => product.id === productId)
   }
 }
 
