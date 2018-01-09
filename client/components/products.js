@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import {getCategory} from '../store'
+import {getCategory, addToCart} from '../store'
+
 
 class Products extends Component {
   constructor(props) {
@@ -89,7 +90,7 @@ class Products extends Component {
     return this.props.products.map(product => {
       return (
         <li key={product.id}>
-          <Link to={`/products/${product.id}`}>{product.name}</Link>
+          <Link to={`/products/${product.id}`}>{product.name}</Link> <button onClick={() => this.props.handleAddToCart(product)}>Add to Cart</button>
         </li>
       )
     })
@@ -100,7 +101,7 @@ class Products extends Component {
       return this.state.filtered.map(product => {
         return (
           <li key={product.id}>
-            <Link to={`/products/${product.id}`}>{product.name}</Link>
+            <Link to={`/products/${product.id}`}>{product.name}</Link> <button onClick={() => this.props.handleAddToCart(product)}>Add to Cart</button>
           </li>
         )
       })
@@ -136,7 +137,15 @@ const mapState = (state) => {
   }
 }
 
-export default connect(mapState)(Products)
+const mapDispatch = (dispatch) => {
+  return {
+    handleAddToCart (product) {
+      dispatch(addToCart(product))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(Products)
 
 /**
  * PROP TYPES

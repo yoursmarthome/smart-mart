@@ -13,6 +13,7 @@ const SingleProduct = (props) => {
         <div>
           <h3>{product.name}</h3>
           <p>{product.description}</p>
+          <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
         </div>
       }
     </div>
