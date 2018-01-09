@@ -30,12 +30,3 @@ const mapState = (state, ownProps) => {
 }
 
 export default connect(mapState)(SingleProduct)
-
-/**
- * PROP TYPES
- */
-// Main.propTypes = {
-//   children: PropTypes.object,
-//   handleClick: PropTypes.func.isRequired,
-//   isLoggedIn: PropTypes.bool.isRequired
-// }
