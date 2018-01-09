@@ -36,8 +36,8 @@ class Products extends Component {
         <div className="product-container">
           <ul className="category-list">
           <button className="clearCategories" onClick={this.clearFilters}>
-          Clear Filters
-        </button>
+            Clear Filters
+          </button>
             <h2>Filter by Category</h2>
             {
               this.props.categories.map(category => {
@@ -89,7 +89,7 @@ class Products extends Component {
     return this.props.products.map(product => {
       return (
         <li key={product.id}>
-          {product.name}
+          <Link to={`/products/${product.id}`}>{product.name}</Link>
         </li>
       )
     })
@@ -100,7 +100,7 @@ class Products extends Component {
       return this.state.filtered.map(product => {
         return (
           <li key={product.id}>
-            {product.name}
+            <Link to={`/products/${product.id}`}>{product.name}</Link>
           </li>
         )
       })
