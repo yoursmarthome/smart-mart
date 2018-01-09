@@ -4,7 +4,6 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
-// const GET_PRODUCT = 'GET_PRODUCT'
 const GET_PRODUCTS = 'GET_PRODUCTS'
 
 /**
@@ -32,12 +31,9 @@ export const fetchProducts = () =>
  * REDUCER
  */
 export default function (state = defaultProducts, action) {
-  // let newState = Object.assign([], state)
   switch (action.type) {
     case GET_PRODUCTS:
       return action.products
-    // case GET_PRODUCT:
-    //   return newState.concat(action.product)
     default:
       return state
   }
