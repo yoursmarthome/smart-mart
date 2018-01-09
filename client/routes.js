@@ -24,11 +24,10 @@ class Routes extends Component {
         <Main>
           <Switch>
             {/* Routes placed here are available to all visitors */}
-            <Route path="/" component={Products} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/products/:id" component={SingleProduct} />
-
+            <Route path="/" component={Products} />
             {
               isLoggedIn &&
                 <Switch>
