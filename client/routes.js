@@ -3,8 +3,10 @@ import {connect} from 'react-redux'
 import {Route, Switch, Router} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
+
 import {Main, Login, Signup, UserHome, Products, SingleProduct} from './components'
-import {me, fetchProducts} from './store'
+import {me, fetchProducts, fetchCategories} from './store'
+
 
 /**
  * COMPONENT
@@ -22,10 +24,11 @@ class Routes extends Component {
         <Main>
           <Switch>
             {/* Routes placed here are available to all visitors */}
+            <Route path="/" component={Products} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route exact path="/products" component={Products} />
             <Route path="/products/:id" component={SingleProduct} />
+
             {
               isLoggedIn &&
                 <Switch>
@@ -58,6 +61,7 @@ const mapDispatch = (dispatch) => {
     loadInitialData () {
       dispatch(me())
       dispatch(fetchProducts())
+      dispatch(fetchCategories())
     }
   }
 }
