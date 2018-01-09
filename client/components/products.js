@@ -1,29 +1,71 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
+import {getCategory} from '../store'
 
-const Products = (props) => {
-  const { products } = props
+class Products extends Component {
+  constructor(props) {
+    super(props)
 
-  return (
-    <div>
-      <h3>Products</h3>
-      <div className="product-container">
-        <ul className="product-list">
-        {
-          products.map(product => {
-            return (
-              <li>
-                {product.name}
-              </li>
-            )
-          })
-        }
-        </ul>
+    this.state ={
+      category: {}
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Products</h3>
+        <div className="product-container">
+          <ul className="category-list">
+            <h2>Filter by Category</h2>
+            {
+              this.props.categories.map(category => {
+                return (
+                  <li>
+                    <a onClick={() => this.handleCategorySelect(category)}>
+                      {category.name}
+                    </a>
+                  </li>
+                )
+              })
+            }
+          </ul>
+          <ul className="product-list">
+            <h2>Products</h2>
+            {this.state.category.id ? this.renderFilteredProducts(): this.renderAllProducts()}
+          </ul>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
+
+  handleCategorySelect(category) {
+    this.setState({category})
+  }
+
+  renderAllProducts() {
+    return this.props.products.map(product => {
+      return (
+        <li>
+          {product.name}
+        </li>
+      )
+    })
+  }
+
+  renderFilteredProducts() {
+    return this.props.products.filter(product => {
+      return product.categoryId === this.state.category.id
+    }).map(product => {
+      return (
+        <li>
+          {product.name}
+        </li>
+      )
+    })
+  }
 }
 
 /**
@@ -31,7 +73,8 @@ const Products = (props) => {
  */
 const mapState = (state) => {
   return {
-    products: state.products
+    products: state.products,
+    categories: state.categories
   }
 }
 
