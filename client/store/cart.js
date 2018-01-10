@@ -28,23 +28,24 @@ const getCart = cart => ({type: GET_CART, cart})
 //       .catch(err => console.log(err))
 
 export const fetchCart = () => {
-  const product = JSON.parse(localStorage.getItem('cart'))
-  if (product) return ({type: ADD_TO_CART, product})
+  const currentCart = JSON.parse(localStorage.getItem('cart'))
+  if (currentCart) return ({type: ADD_TO_CART, product: currentCart})
   else return ({type: ADD_TO_CART, product: defaultCart})
 }
 
 export const addToCart = (product) => {
   const currentCart = JSON.parse(localStorage.getItem('cart'))
+  let stringCart = ''
   console.log('currentCart', currentCart)
   if (currentCart) {
-    const finalCart = currentCart.push(product)
-    console.log('finalCart', finalCart)
-    localStorage.setItem('cart', finalCart)
+    currentCart.push(product) // believe this was becoming '2'
+    stringCart = JSON.stringify(currentCart)
   }
   else {
-    const stringCart = JSON.stringify([product])
-    localStorage.setItem('cart', stringCart) 
+    stringCart = JSON.stringify([product])
   }
+  console.log('stringCart', stringCart)
+  localStorage.setItem('cart', stringCart) 
   return ({type: ADD_TO_CART, product})
 }
 
