@@ -38,7 +38,7 @@ export const addToCart = (product) => {
   let stringCart = ''
   console.log('currentCart', currentCart)
   if (currentCart) {
-    currentCart.push(product) // believe this was becoming '2'
+    currentCart.push(product)
     stringCart = JSON.stringify(currentCart)
   }
   else {
