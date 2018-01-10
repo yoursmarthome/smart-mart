@@ -12,6 +12,7 @@ const SingleProduct = (props) => {
       {
         !product ? null :
         <div>
+          <img src={product.photo} />
           <h3>{product.name}</h3>
           <p>{product.description}</p>
           <button onClick={() => handleAddToCart(product)}>Add to Cart</button>

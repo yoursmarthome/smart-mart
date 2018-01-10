@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {getCategory, addToCart} from '../store'
 import Cart from './cart';
+import ProductTile from './product-tile';
 
 
 class Products extends Component {
@@ -91,22 +92,14 @@ class Products extends Component {
 
   renderAllProducts() {
     return this.props.products.map(product => {
-      return (
-        <li key={product.id}>
-          <Link to={`/products/${product.id}`}>{product.name}</Link> <button onClick={() => this.props.handleAddToCart(product)}>Add to Cart</button>
-        </li>
-      )
+      return <ProductTile product={product} key={product.id} />
     })
   }
 
   renderFilteredProducts() {
     if (this.state.filtered.length) {
       return this.state.filtered.map(product => {
-        return (
-          <li key={product.id}>
-            <Link to={`/products/${product.id}`}>{product.name}</Link> <button onClick={() => this.props.handleAddToCart(product)}>Add to Cart</button>
-          </li>
-        )
+        return <ProductTile product={product} key={product.id} />
       })
     } else {
       return <p> No Products Found </p>

@@ -6,6 +6,7 @@ import history from '../history'
  */
 const GET_CART = 'GET_CART'
 const ADD_TO_CART = 'ADD_TO_CART'
+const CLEAR_CART = 'CLEAR_CART'
 
 /**
  * INITIAL STATE
@@ -16,6 +17,10 @@ const defaultCart = []
  * ACTION CREATORS
  */
 const getCart = cart => ({type: GET_CART, cart})
+export const clearCart = () => {
+  localStorage.removeItem('cart');
+  return {type: CLEAR_CART}
+}
 
 /**
  * THUNK CREATORS
@@ -45,7 +50,7 @@ export const addToCart = (product) => {
     stringCart = JSON.stringify([product])
   }
   console.log('stringCart', stringCart)
-  localStorage.setItem('cart', stringCart) 
+  localStorage.setItem('cart', stringCart)
   return ({type: ADD_TO_CART, product})
 }
 
@@ -59,6 +64,8 @@ export default function (state = defaultCart, action) {
       return action.cart
     case ADD_TO_CART:
       return newState.concat(action.product)
+    case CLEAR_CART:
+      return defaultCart
     default:
       return state
   }

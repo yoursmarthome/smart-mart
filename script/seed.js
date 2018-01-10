@@ -25,9 +25,9 @@ async function seed () {
 
   const categories = await Promise.all([
     Category.create({
-      name: 'Temperature Control', 
-      description: 'To control your temperature.', 
-      photo: ''
+      name: 'Temperature Control',
+      description: 'To control your temperature.',
+      photo: 'https://m.media-amazon.com/images/S/aplus-media/vc/93416ff0-fb8c-48e1-99dc-f1e70e151da1._SR285,285_.png'
     }),
     Category.create({
       name: 'Lighting',
@@ -37,22 +37,57 @@ async function seed () {
   ])
 
   const products = await Promise.all([
-    Product.create({
-      name: 'Thermostat',
-      description: 'Auto adjusts your thermostat',
-      photo: '',
-      rating: 0,
-      price: 99.9,
+    Product.create(
+      {
+      name: 'Nest Learning Thermostat, Easy Temperature Control for Every Room in Your House, Stainless Steel (Third Generation)',
+      description: 'SAVE ENERGY WITH NEST: Nest introduces the 3rd generation Nest Learning Thermostat. With four beautiful colors to choose from and an easy to read display, this thermostat will help make your home not only smart but energy efficient. With just a few manual adjustments, the Nest Thermostat can learn your habits and start to save you money by automatically adjusting the temperature.',
+      photo: 'https://m.media-amazon.com/images/S/aplus-media/vc/93416ff0-fb8c-48e1-99dc-f1e70e151da1._SR285,285_.png',
+      rating: 5,
+      price: 235.70,
       categoryId: 1
     }),
     Product.create({
-      name: 'Smart-Bulb',
-      description: "It's real now!",
-      photo: '',
+      name: 'POPMAS Wall Plate-Metal Wall Plate Cover for Nest Thermostat 3rd, 2nd and 1st Generation Black',
+      description: 'Mount design for Nest Thermostat 3rd, 2nd and 1st Generation',
+      photo: 'https://images-na.ssl-images-amazon.com/images/I/41F8awuSw0L._SL500_AC_SS350_.jpg',
+      rating: 4,
+      price: 19.90,
+      categoryId: 1
+    }),
+    Product.create({
+      name: 'ecobee3 lite Smart Thermostat, Works with Amazon Alexa, 2nd Gen',
+      description: 'Savings: bring home Ecobee3 lite and save up to 23%* on your heating and cooling costs.',
+      photo: 'https://images-na.ssl-images-amazon.com/images/I/31L6STDpnbL._SL500_AC_SS350_.jpg',
+      rating: 4,
+      price: 169.00,
+      categoryId: 1
+    }),
+
+    Product.create(
+      {
+      name: 'Philips Hue White Smart Bulb Starter Kit (4 A19 Bulbs and 1 Bridge, Compatible with Amazon Alexa, Apple HomeKit and Google Assistant)',
+      description: 'Automate your lighting experience with Philips Hue and control your lights from home or away. Create light schedules from the Philips Hue App and never come home to a dark house.',
+      photo: 'https://m.media-amazon.com/images/S/aplus-media/vc/5888b993-213f-45f7-9b20-3effd8be2ed3._SR285,285_.jpg',
       rating: 5,
-      price: 2.50,
+      price: 79.99,
       categoryId: 2
     }),
+    Product.create({
+      name: 'Nexlux LED Strip Lights, Wifi Wireless Smart Phone Controlled Light Strip Kit 16.4ft 150leds 5050 Waterproof IP65 LED Lights ,Working with Android and IOS System,Alexa, Google Assistant',
+      description: 'Wifi wireless Smart Controller: You can set Nexlux wifi led light strip to power on with the morning sun, gently waking you, or to turn on and off as you leave or arrive home',
+      photo: 'https://images-na.ssl-images-amazon.com/images/I/718CBUC4Q8L._SY355_.jpg',
+      rating: 4,
+      price: 19.90,
+      categoryId: 2
+    }),
+    Product.create({
+      name: 'SYLVANIA Smart+ LED Landscape Lighting Set, Gardenspots - Mini RGB Outdoor Kit with Removable Stakes, Adjustable RGB Color Changing, Includes 9 Lights, 73699 (Formerly LIGHTIFY), Works with Amazon Alexa',
+      description: 'ILLUMINATE YOUR GARDEN AND PATIO: 9 Lights position as you wish to create your own outdoor scenes. Perfect for backyard landscape accents, illuminate walkways, or remove stakes to use deck and poolside.',
+      photo: 'https://images-na.ssl-images-amazon.com/images/I/51N9VK2QH9L._SL500_AC_SS350_.jpg',
+      rating: 4,
+      price: 69.98,
+      categoryId: 2
+    })
   ])
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
   // and store the result that the promise resolves to in a variable! This is nice!

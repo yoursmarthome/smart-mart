@@ -15,7 +15,8 @@ const Main = (props) => {
 
   return (
     <div>
-      <h1>BOILERMAKER</h1>
+      <Link to="/"><h1>Smart-Mart</h1></Link>
+      <h4>Your One Stop Shop for Smart Home Products</h4>
       <nav>
         {
           isLoggedIn
