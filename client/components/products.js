@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {getCategory, addToCart} from '../store'
+import Cart from './cart';
 
 
 class Products extends Component {
@@ -32,6 +33,8 @@ class Products extends Component {
           search
         </button>
       </div>
+
+      <Cart />
 
         <h3>Products</h3>
         <div className="product-container">

@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
+import {getCategory, addToCart} from '../store'
 
 const SingleProduct = (props) => {
-  const { product } = props
+  const { product, handleAddToCart } = props
 
   return (
     <div>
@@ -31,4 +32,12 @@ const mapState = (state, ownProps) => {
   }
 }
 
-export default connect(mapState)(SingleProduct)
+const mapDispatch = (dispatch) => {
+  return {
+    handleAddToCart (product) {
+      dispatch(addToCart(product))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(SingleProduct)
