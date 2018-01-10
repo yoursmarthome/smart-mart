@@ -7,6 +7,7 @@ import history from '../history'
 const GET_CART = 'GET_CART'
 const ADD_TO_CART = 'ADD_TO_CART'
 const CLEAR_CART = 'CLEAR_CART'
+const REMOVE_ITEM = 'REMOVE_ITEM'
 
 /**
  * INITIAL STATE
@@ -22,6 +23,22 @@ export const clearCart = () => {
   return {type: CLEAR_CART}
 }
 
+export const removeItem = id => {
+  console.log(id)
+  const currentCart = JSON.parse(localStorage.getItem('cart'))
+  currentCart.forEach((item, index) => {
+    console.log(item)
+    if (item.id === id) {
+      currentCart[index].quantity--
+      console.log('hitting foudn item!')
+      if (currentCart[index].quantity === 0) currentCart.splice(index, 1)
+    }
+  })
+  let stringCart = JSON.stringify(currentCart)
+  localStorage.setItem('cart', stringCart)
+  return {type: REMOVE_ITEM, currentCart}
+}
+
 /**
  * THUNK CREATORS
  */
@@ -34,24 +51,31 @@ export const clearCart = () => {
 
 export const fetchCart = () => {
   const currentCart = JSON.parse(localStorage.getItem('cart'))
-  if (currentCart) return ({type: ADD_TO_CART, product: currentCart})
-  else return ({type: ADD_TO_CART, product: defaultCart})
+  if (currentCart !== null) return ({type: ADD_TO_CART, currentCart})
+  else return ({type: ADD_TO_CART, currentCart: defaultCart})
 }
 
-export const addToCart = (product) => {
-  const currentCart = JSON.parse(localStorage.getItem('cart'))
+export const addToCart = (id) => {
+  const newProduct = {id: id, quantity: 1}
+  let currentCart = JSON.parse(localStorage.getItem('cart'))
   let stringCart = ''
-  console.log('currentCart', currentCart)
   if (currentCart) {
-    currentCart.push(product)
+    let found = false
+    currentCart.forEach((item, index) => {
+      if (item.id === id) {
+        currentCart[index].quantity++
+        found = true
+      }
+    })
+    if (!found) currentCart.push(newProduct)
     stringCart = JSON.stringify(currentCart)
   }
   else {
-    stringCart = JSON.stringify([product])
+    currentCart = [newProduct]
+    stringCart = JSON.stringify(currentCart)
   }
-  console.log('stringCart', stringCart)
   localStorage.setItem('cart', stringCart)
-  return ({type: ADD_TO_CART, product})
+  return ({type: ADD_TO_CART, currentCart})
 }
 
 /**
@@ -63,9 +87,11 @@ export default function (state = defaultCart, action) {
     case GET_CART:
       return action.cart
     case ADD_TO_CART:
-      return newState.concat(action.product)
+      return action.currentCart
     case CLEAR_CART:
       return defaultCart
+    case REMOVE_ITEM:
+      return action.currentCart
     default:
       return state
   }

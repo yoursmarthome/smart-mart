@@ -15,7 +15,7 @@ const SingleProduct = (props) => {
           <img src={product.photo} />
           <h3>{product.name}</h3>
           <p>{product.description}</p>
-          <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+          <button onClick={() => handleAddToCart(product.id)}>Add to Cart</button>
         </div>
       }
     </div>
@@ -35,8 +35,8 @@ const mapState = (state, ownProps) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleAddToCart (product) {
-      dispatch(addToCart(product))
+    handleAddToCart (id) {
+      dispatch(addToCart(id))
     }
   }
 }

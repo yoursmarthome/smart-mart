@@ -13,15 +13,15 @@ const ProductTile = (props) => {
         <img src={product.photo} />
         <h5>{product.price}</h5>
       </Link>
-      <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+      <button onClick={() => handleAddToCart(product.id)}>Add to Cart</button>
     </div>
   )
 }
 
 const mapDispatch = (dispatch) => {
   return {
-    handleAddToCart (product) {
-      dispatch(addToCart(product))
+    handleAddToCart (id) {
+      dispatch(addToCart(id))
     }
   }
 }
