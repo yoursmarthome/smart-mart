@@ -26,7 +26,9 @@ const Review = require('./review')
 
   User.hasMany(Review)
 
-
+// JM what about orders?
+// - Orders must contain line items that capture the price, current product ID and quantity
+// - I like the idea of a separate LineItem model.
 
 module.exports = {
   User,

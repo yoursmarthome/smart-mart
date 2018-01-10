@@ -3,6 +3,8 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
+  // JM - email validation in sequelize?
+  // JM - for a string whenever you have allowNull, also have a validation for notEMpty
   email: {
     type: Sequelize.STRING,
     unique: true,

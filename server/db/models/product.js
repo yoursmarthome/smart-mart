@@ -12,11 +12,15 @@ const Product = db.define('product', {
   },
   photo: {
     type: Sequelize.STRING
+    // JM - defaultValue?
   },
   rating: {
     type: Sequelize.INTEGER
-    //needs to calculate average
+    // JM
+    //needs to calculate average - maybe a getter?
   },
+  // JM - keep prices as integer.
+  // $1.99 -> 199, maybe use getters/setters
   price: {
     type: Sequelize.FLOAT
   }
