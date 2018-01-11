@@ -57,7 +57,6 @@ export const fetchCart = () => {
 }
 
 export const addToCart = (id, price) => {
-  console.log(price)
   const newProduct = {id: id, price: price, quantity: 1}
   let currentCart = JSON.parse(localStorage.getItem('cart'))
   let stringCart = ''
@@ -83,8 +82,9 @@ export const addToCart = (id, price) => {
 const calcTotal = (cart) => {
   cart.total = 0
   cart.myCart.map(item => {
-    const productPrice = parseInt(item.price)
-    const currentTotal = (productPrice * item.quantity)
+    const productPrice = (item.price * 1).toFixed(2)
+    const currentTotal = (productPrice * item.quantity).toFixed(2)
+    console.log(currentTotal)
     cart.total += currentTotal
   })
   return cart

@@ -18,7 +18,13 @@ const Product = db.define('product', {
     //needs to calculate average
   },
   price: {
-    type: Sequelize.FLOAT
+    type: Sequelize.INTEGER,
+    set(ogPrice) {
+      this.setDataValue('price', ogPrice * 100)
+    },
+    get() {
+      return (this.getDataValue('price') / 100).toFixed(2)
+    }
   }
 })
 
