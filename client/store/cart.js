@@ -31,7 +31,7 @@ export const removeItem = id => {
   currentCart.myCart.forEach((item, index) => {
     if (item.id === id) {
       currentCart.myCart[index].quantity--
-      currentCart.total -= item.price
+      currentCart.total = ((currentCart.total - item.price) * 1).toFixed(2)
       if (currentCart.myCart[index].quantity === 0) currentCart.myCart.splice(index, 1)
     }
   })
@@ -82,10 +82,9 @@ export const addToCart = (id, price) => {
 const calcTotal = (cart) => {
   cart.total = 0
   cart.myCart.map(item => {
-    const productPrice = (item.price * 1).toFixed(2)
-    const currentTotal = (productPrice * item.quantity).toFixed(2)
-    console.log(currentTotal)
-    cart.total += currentTotal
+    const productPrice = (item.price * 1)
+    const currentTotal = ((productPrice * item.quantity) * 1 ).toFixed(2)
+    cart.total = ((cart.total + currentTotal) * 1).toFixed(2)
   })
   return cart
 }
