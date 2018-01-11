@@ -20,6 +20,8 @@ const LineItem = require('./lineItem')
  */
   Product.belongsTo(Category)
   Product.hasMany(Review)
+  LineItem.belongsTo(Product)
+
 
   Category.hasMany(Product)
 
@@ -29,7 +31,7 @@ const LineItem = require('./lineItem')
   User.hasMany(Review)
   User.hasMany(Order)
 
-  Order.hasMany(Product)
+  //Order.hasMany(Product)
   Order.hasMany(LineItem)
 
   //LineItem.hasOne(Product)

@@ -2,11 +2,9 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const LineItem = db.define('lineItem', {
-  price: {
-    type: Sequelize.VIRTUAL,
-
+  quantity: {
+    type: Sequelize.INTEGER
   }
-  //calculated
 })
 
 module.exports = LineItem
