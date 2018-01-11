@@ -34,11 +34,14 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
     const googleId = profile.id
     const name = profile.displayName
     const email = profile.emails[0].value
+    // Since our model requires a password, we stored a random string so the password
+    // Could not be guessed and combined with the associated google email to gain access.
+    const password = 'z>/[E<CVwGAma&7?';
 
     User.find({where: {googleId}})
       .then(foundUser => (foundUser
         ? done(null, foundUser)
-        : User.create({name, email, googleId})
+        : User.create({name, email, googleId, password})
           .then(createdUser => done(null, createdUser))
       ))
       .catch(done)
