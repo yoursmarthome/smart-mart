@@ -6,19 +6,18 @@ import _ from 'lodash'
 
 const Cart = (props) => {
   const { cart, products, handleCartClear, handleItemRemove, handleAddToCart } = props
-
   return (
     <div>
       <h2>Cart</h2>
       <button onClick={() => handleCartClear()}>Clear Cart</button>
       <ul>
         {
-          cart.length && products.length ? 
-          cart.map(item => {
-            const product = _.find(products, { id: item.id})
+          cart.myCart.length && products.length ? 
+          cart.myCart.map(item => {
+            const product = _.find(products, { id: item.id })
             return (
               <li key={item.id}>
-                <button className='remove-item-cart' onClick={() => handleAddToCart(item.id)}>+</button>
+                <button className='remove-item-cart' onClick={() => handleAddToCart(item.id, product.price)}>+</button>
                 <h4>{product.name}</h4>
                 <h4>{item.quantity}</h4>
                 <button className='remove-item-cart' onClick={() => handleItemRemove(item.id)}>-</button>
@@ -26,9 +25,13 @@ const Cart = (props) => {
             )
           }) : 
           <li>No items in cart.</li>
-          
         }
       </ul>
+      <div>
+        {
+          'Total: $' + cart.total
+        }
+      </div>
     </div>
   )
 }
@@ -51,8 +54,8 @@ const mapDispatch = (dispatch) => {
     handleItemRemove (id) {
       dispatch(removeItem(id))
     },
-    handleAddToCart (id) {
-      dispatch(addToCart(id))
+    handleAddToCart (id, price) {
+      dispatch(addToCart(id, price))
     }
   }
 }
