@@ -1,6 +1,8 @@
 import axios from 'axios'
 import history from '../history'
 
+// NOTE: PLACE TOTAL ON CART
+
 /**
  * ACTION TYPES
  */
@@ -12,26 +14,25 @@ const REMOVE_ITEM = 'REMOVE_ITEM'
 /**
  * INITIAL STATE
  */
-const defaultCart = []
+const defaultCart = { myCart: [], total: 0 }
 
 /**
  * ACTION CREATORS
  */
 const getCart = cart => ({type: GET_CART, cart})
+
 export const clearCart = () => {
   localStorage.removeItem('cart');
   return {type: CLEAR_CART}
 }
 
 export const removeItem = id => {
-  console.log(id)
   const currentCart = JSON.parse(localStorage.getItem('cart'))
-  currentCart.forEach((item, index) => {
-    console.log(item)
+  currentCart.myCart.forEach((item, index) => {
     if (item.id === id) {
-      currentCart[index].quantity--
-      console.log('hitting foudn item!')
-      if (currentCart[index].quantity === 0) currentCart.splice(index, 1)
+      currentCart.myCart[index].quantity--
+      currentCart.total -= item.price
+      if (currentCart.myCart[index].quantity === 0) currentCart.myCart.splice(index, 1)
     }
   })
   let stringCart = JSON.stringify(currentCart)
@@ -55,27 +56,38 @@ export const fetchCart = () => {
   else return ({type: ADD_TO_CART, currentCart: defaultCart})
 }
 
-export const addToCart = (id) => {
-  const newProduct = {id: id, quantity: 1}
+export const addToCart = (id, price) => {
+  console.log(price)
+  const newProduct = {id: id, price: price, quantity: 1}
   let currentCart = JSON.parse(localStorage.getItem('cart'))
   let stringCart = ''
   if (currentCart) {
     let found = false
-    currentCart.forEach((item, index) => {
+    currentCart.myCart.forEach((item, index) => {
       if (item.id === id) {
-        currentCart[index].quantity++
+        currentCart.myCart[index].quantity++
         found = true
       }
     })
-    if (!found) currentCart.push(newProduct)
-    stringCart = JSON.stringify(currentCart)
+    if (!found) currentCart.myCart.push(newProduct)
   }
   else {
-    currentCart = [newProduct]
-    stringCart = JSON.stringify(currentCart)
+    currentCart = {myCart: [newProduct], total: 0}
   }
+  calcTotal(currentCart)
+  stringCart = JSON.stringify(currentCart)
   localStorage.setItem('cart', stringCart)
   return ({type: ADD_TO_CART, currentCart})
+}
+
+const calcTotal = (cart) => {
+  cart.total = 0
+  cart.myCart.map(item => {
+    const productPrice = parseInt(item.price)
+    const currentTotal = (productPrice * item.quantity)
+    cart.total += currentTotal
+  })
+  return cart
 }
 
 /**

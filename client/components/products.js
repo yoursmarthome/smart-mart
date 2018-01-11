@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import {getCategory, addToCart} from '../store'
+import {getCategory} from '../store'
 import Cart from './cart';
 import ProductTile from './product-tile';
 
@@ -133,15 +133,7 @@ const mapState = (state) => {
   }
 }
 
-const mapDispatch = (dispatch) => {
-  return {
-    handleAddToCart (product) {
-      dispatch(addToCart(product))
-    }
-  }
-}
-
-export default connect(mapState, mapDispatch)(Products)
+export default connect(mapState)(Products)
 
 /**
  * PROP TYPES

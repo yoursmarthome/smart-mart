@@ -15,7 +15,8 @@ const SingleProduct = (props) => {
           <img src={product.photo} />
           <h3>{product.name}</h3>
           <p>{product.description}</p>
-          <button onClick={() => handleAddToCart(product.id)}>Add to Cart</button>
+          <p>{product.price}</p>
+          <button onClick={() => handleAddToCart(product.id, product.price)}>Add to Cart</button>
         </div>
       }
     </div>
@@ -27,7 +28,6 @@ const SingleProduct = (props) => {
  */
 const mapState = (state, ownProps) => {
   const productId = Number(ownProps.match.params.id)
-  console.log(productId)
   return {
     product: state.products.find(product => product.id === productId)
   }
@@ -35,8 +35,8 @@ const mapState = (state, ownProps) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleAddToCart (id) {
-      dispatch(addToCart(id))
+    handleAddToCart (id, price) {
+      dispatch(addToCart(id, price))
     }
   }
 }
