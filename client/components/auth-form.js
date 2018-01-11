@@ -24,7 +24,7 @@ const AuthForm = (props) => {
           <button type="submit">{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data === "Validation error: Validation isEmail on email failed" && 'Please Enter A Valid Email'} </div>}
-        {error && error.response && <div> {error.response.data === "Validation notEmpty on password failed" && 'Please Enter A Valid Password'} </div>}
+        {error && error.response && <div> {error.response.data === "Validation error: Validation notEmpty on password failed" && 'Please Enter A Valid Password'} </div>}
         {error && error.response && <div> {error.response.data === "Validation error: Validation isEmail on email failed,\nValidation error: Validation notEmpty on password failed" && 'Please Enter A Valid Email and Password'} </div>}
       </form>
       <a href="/auth/google">{displayName} with Google</a>
