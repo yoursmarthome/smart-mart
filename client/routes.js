@@ -27,7 +27,6 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/products/:id" component={SingleProduct} />
-            <Route path="/" component={Products} />
             {
               isLoggedIn &&
                 <Switch>
@@ -37,6 +36,7 @@ class Routes extends Component {
             }
             {/* Displays our Login component as a fallback */}
             <Route component={Login} />
+            <Route path="/" component={Products} />
           </Switch>
         </Main>
       </Router>
