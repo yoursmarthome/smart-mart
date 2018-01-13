@@ -5,7 +5,8 @@
  */
 export {default as Main} from './main'
 export {default as UserHome} from './user-home'
-export {default as Products} from './products'
 export {default as SingleProduct} from './single-product'
 export {default as Checkout} from './checkout'
+export {default as Home} from './home'
+export {default as Cart} from './cart'
 export {Login, Signup} from './auth-form'
