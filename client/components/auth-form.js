@@ -10,24 +10,32 @@ const AuthForm = (props) => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email"><small>Email</small></label>
-          <input name="email" type="text" />
+    <div className="login-content">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-4 col-sm-offset-4 well">
+            <h2 className="title text-center login-title">Login</h2>
+            <form className="" onSubmit={handleSubmit} name={name}>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input name="email" className="form-control"  type="text" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input name="password" className="form-control" type="password" />
+              </div>
+              <div>
+                <button className="btn btn-default" type="submit">{displayName}</button>
+              </div>
+              {error && error.response && <div> {error.response.data === 'Validation error: Validation isEmail on email failed' && 'Please Enter A Valid Email'} </div>}
+              {error && error.response && <div> {error.response.data === 'Validation error: Validation notEmpty on password failed' && 'Please Enter A Valid Password'} </div>}
+              {error && error.response && <div> {error.response.data === 'Validation error: Validation isEmail on email failed,\nValidation error: Validation notEmpty on password failed' && 'Please Enter A Valid Email and Password'} </div>}
+            </form>
+            <a href="/auth/google"><div className="google-signin"></div></a><br/>
+            <a href="/auth/facebook"><div className="facebook-signin"></div></a>
+          </div>
         </div>
-        <div>
-          <label htmlFor="password"><small>Password</small></label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data === "Validation error: Validation isEmail on email failed" && 'Please Enter A Valid Email'} </div>}
-        {error && error.response && <div> {error.response.data === "Validation error: Validation notEmpty on password failed" && 'Please Enter A Valid Password'} </div>}
-        {error && error.response && <div> {error.response.data === "Validation error: Validation isEmail on email failed,\nValidation error: Validation notEmpty on password failed" && 'Please Enter A Valid Email and Password'} </div>}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      </div>
     </div>
   )
 }
