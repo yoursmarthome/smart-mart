@@ -32,7 +32,7 @@ async function seed () {
     Category.create({
       name: 'Lighting',
       description: 'To light your house.',
-      photo: ''
+      photo: 'https://m.media-amazon.com/images/S/aplus-media/vc/5888b993-213f-45f7-9b20-3effd8be2ed3._SR285,285_.jpg'
     })
   ])
 
