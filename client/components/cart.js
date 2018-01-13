@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import { clearCart, removeItem, addToCart } from '../store'
 import _ from 'lodash'
+import Checkout from './checkout'
 
 function Cart (props){
   const { cart, cartTotal, products, handleCartClear, handleItemRemove, handleAddToCart } = props
@@ -23,6 +24,7 @@ function Cart (props){
                       <button className='remove-item-cart' onClick={() => handleAddToCart(item.id, product.price)}>+</button>
                       <h4>{product.name}</h4>
                       <h4>{item.quantity}</h4>
+                      <h4>{'$'+ ((+product.price * +item.quantity).toFixed(2))}</h4>
                       <button className='remove-item-cart' onClick={() => handleItemRemove(item.id)}>-</button>
                     </li>
                   )
@@ -39,7 +41,6 @@ function Cart (props){
         </div>
       </div>
     </div>
-
   )
 }
 

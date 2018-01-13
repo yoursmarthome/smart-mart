@@ -84,7 +84,7 @@ const calcTotal = (cart) => {
   cart.myCart.map(item => {
     const productPrice = (item.price * 1)
     const currentTotal = ((productPrice * item.quantity) * 1 ).toFixed(2)
-    cart.total = ((cart.total + currentTotal) * 1).toFixed(2)
+    cart.total = ((+cart.total + +currentTotal) * 1).toFixed(2)
   })
   return cart
 }
