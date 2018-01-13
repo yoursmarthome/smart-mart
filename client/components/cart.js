@@ -34,7 +34,7 @@ const Cart = (props) => {
           'Total: $' + cart.total
         }
       </div>
-      <Checkout />
+      {/* <Checkout />*/}
     </div>
   )
 }
