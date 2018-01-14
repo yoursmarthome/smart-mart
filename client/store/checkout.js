@@ -4,6 +4,8 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
+const GET_ORDER = 'GET_ORDER'
+
 const WRITE_FIRST_NAME = 'WRITE_FIRST_NAME'
 const WRITE_LAST_NAME = 'WRITE_LAST_NAME'
 const WRITE_EMAIL = 'WRITE_EMAIL'
@@ -31,6 +33,8 @@ const defaultCheckout = {
  * ACTION CREATORS
  */
 // const getProduct = product => ({type: GET_PRODUCT, product})
+export const getOrder = order => ({ type: GET_ORDER, order })
+
 export const writeFirstName = firstName => ({ type: WRITE_FIRST_NAME, firstName })
 export const writeLastName = lastName => ({ type: WRITE_LAST_NAME, lastName })
 export const writeEmail = email => ({ type: WRITE_EMAIL, email })
@@ -43,12 +47,18 @@ export const writeZip = zip => ({ type: WRITE_ZIP, zip })
 // /**
 //  * THUNK CREATORS
 //  */
-// export const fetchProducts = () =>
-//   dispatch =>
-//     axios.get('/api/products')
-//       .then(res =>
-//         dispatch(getProducts(res.data || defaultProduct)))
-//       .catch(err => console.log(err))
+export function postOrder(checkout, history) {
+  console.log('checkout', checkout)
+  return function thunk(dispatch) {
+    return axios.post('/api/orders', checkout)
+      .then(res => res.data)
+      .then(order => {
+        const action = getOrder(order)
+        dispatch(action)
+        // history.push()  where should user be routed to? confirmation page?
+      })
+  }
+}
 
 /**
  * REDUCER
@@ -56,6 +66,8 @@ export const writeZip = zip => ({ type: WRITE_ZIP, zip })
 export default function (state = defaultCheckout, action) {
   let newState = Object.assign({}, state)
   switch (action.type) {
+    case GET_ORDER:
+      return action.order
     case WRITE_FIRST_NAME:
       newState.firstName = action.firstName
       return newState

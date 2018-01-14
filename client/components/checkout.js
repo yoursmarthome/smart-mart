@@ -2,7 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import { writeFirstName, writeLastName, writeEmail, 
-  writePhone, writeStreet, writeStreet2, changeState, writeZip } from '../store'
+  writePhone, writeStreet, writeStreet2, changeState, writeZip,
+  postOrder } from '../store'
 import _ from 'lodash'
 
 const Checkout = (props) => {
@@ -105,7 +106,7 @@ const mapState = (state) => {
   }
 }
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, ownProps) => {
   return {
     handleFirstNameChange (evt) {
       dispatch(writeFirstName(evt.target.value))
@@ -132,7 +133,8 @@ const mapDispatch = (dispatch) => {
       dispatch(writeEmail(evt.target.value))
     },
     handleSubmit (checkout, evt) {
-      console.log(checkout)
+      evt.preventDefault()
+      dispatch(postOrder(checkout, ownProps.history))
     }
   }
 }
