@@ -78,6 +78,10 @@ a#scrollUp i {
   margin-bottom: 0;
 }
 
+.logout-link {
+  cursor: pointer;
+}
+
 .badge {
   border-radius: 10px !important;
   margin-left: 2px;
@@ -588,6 +592,7 @@ ul.sub-menu {
 
 .category-panel {
     padding: 10px;
+    padding-bottom: 20px;
     border-color: #EEE;
 }
 

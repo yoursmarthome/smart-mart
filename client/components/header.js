@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
+import {logout} from '../store'
 
 function Header (props) {
+	const {isLoggedIn, handleLogoutClick} = props;
   return (
     <header id="header">
 		<div className="header_top">
@@ -56,7 +58,12 @@ function Header (props) {
 									'0'
 								}
 								</span></Link></li>
-								<li><Link to="/login"><i className="fa fa-lock" /> Login</Link></li>
+								{
+									isLoggedIn ?
+									<li><a onClick={() => handleLogoutClick()} className="logout-link"><i className="fa fa-lock" /> Logout</a></li> :
+									<li><Link to="/login"><i className="fa fa-lock" /> Login</Link></li>
+								}
+
 							</ul>
 						</div>
 					</div>
@@ -69,8 +76,17 @@ function Header (props) {
 
 const mapState = (state) => {
   return {
-		cart: state.cart.myCart
+		cart: state.cart.myCart,
+		isLoggedIn: !!state.user.id
   }
 }
 
-export default connect(mapState)(Header)
+const mapDispatch = (dispatch) => {
+  return {
+    handleLogoutClick () {
+      dispatch(logout())
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(Header)
