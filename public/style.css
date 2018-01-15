@@ -1657,7 +1657,7 @@ h2.login-title:after {
 
 .cart-content .panel {
     z-index: 0;
-    padding-bottom: 30px;
+    padding: 20px;
 }
 
 .cart-content .qty-list li {
@@ -1963,6 +1963,18 @@ textarea {
 /*************************
 *******checkout CSS******
 **************************/
+
+.checkout-content {
+    padding-bottom: 50px;
+}
+
+.checkout-content .cart-content {
+    padding-top: 25px;
+}
+
+.checkout-content .title-col {
+    padding-bottom: 20px;
+}
 
 .step-one {
     margin-bottom: -10px
