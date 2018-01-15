@@ -184,7 +184,7 @@ const categories = [
 ];
 
 async function seed () {
-  db.sync({force: true})
+  await db.sync({force: true})
 
   Promise.all(categories.map(category => {
     Category.create(category, { include: Product })
