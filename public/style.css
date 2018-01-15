@@ -272,9 +272,9 @@ a#scrollUp i {
 .search_box input {
     background: #F0F0E9;
     border: 1px solid #ccc;
-    color: #B2B2B2;
+    color: #333;
     font-family: 'roboto';
-    font-weight: 300;
+    font-weight: 400;
     width: 100%;
     outline: medium none;
     padding-left: 10px;
@@ -349,6 +349,28 @@ ul.sub-menu {
 /*************************
 *******Home CSS******
 **************************/
+
+.home-content hr {
+    border: 1px solid #f5f5f5;
+}
+
+.product-grid-title {
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.category-list li {
+    cursor: pointer;
+}
+
+.category-list li.active {
+    color: #337ab7;
+}
 
 .home-content {
     padding-top: 35px;
@@ -731,11 +753,11 @@ h2.title:before {
     position: absolute;
     background: #fff;
     bottom: -6px;
-    width: 220px;
+    width: 400px;
     height: 30px;
     z-index: -1;
     left: 50%;
-    margin-left: -110px;
+    margin-left: -200px;
 }
 
 .category-products .panel {
