@@ -183,14 +183,15 @@ const categories = [
   }
 ];
 
+async function seed () {
+  db.sync({force: true})
 
+  Promise.all(categories.map(category => {
+    Category.create(category, { include: Product })
+  }))
+}
 
-db.sync({force: true})
-  .then(() => {
-    return Promise.all(categories.map(category => {
-      Category.create(category, { include: Product })
-    }))
-  })
+seed()
   .catch(err => {
     console.error('Error seeding db. Error:', err)
     console.error(err.message)
@@ -201,7 +202,7 @@ db.sync({force: true})
     console.log('Successfully seeded db!')
     console.log('closing db connection')
     console.log('db connection closed')
-    return null
+
   })
 
 console.log('seeding...')
