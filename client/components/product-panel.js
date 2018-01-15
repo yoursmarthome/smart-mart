@@ -14,7 +14,7 @@ const ProductPanel = (props) => {
           <p className="category-name">{product.name}</p>
         </Link>
           <p className="product-price">${product.price}</p>
-        <button className="btn btn-default add-to-cart" onClick={() => handleAddToCart(product.id, product.price)}>Add To Cart</button>
+        <button className="btn btn-default" onClick={() => handleAddToCart(product.id, product.price)}>Add To Cart</button>
       </div>
     </div>
   )
