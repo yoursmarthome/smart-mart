@@ -202,7 +202,7 @@ seed()
     console.log('Successfully seeded db!')
     console.log('closing db connection')
     console.log('db connection closed')
-    db.close()
+    //db.close()
   })
 
 console.log('seeding...')
