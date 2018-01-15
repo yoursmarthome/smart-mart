@@ -7,7 +7,7 @@ export default function CategoryPanel (props) {
       <div className="category-panel panel panel-default text-center">
         <img className="img-responsive" src={category.photo} />
         <p className="category-name">{category.name}</p>
-        <button className="btn btn-default add-to-cart">View Products</button>
+        <button className="btn btn-default">View Products</button>
       </div>
     </div>
   )

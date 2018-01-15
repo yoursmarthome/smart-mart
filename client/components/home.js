@@ -3,17 +3,22 @@ import {connect} from 'react-redux'
 import CategoryPanel from './category-panel'
 import ProductPanel from './product-panel'
 import {withRouter, Link} from 'react-router-dom'
+import {fetchCategoryThunk, fetchProducts, fetchSearchThunk} from '../store'
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      term: ''
+      term: '',
+      category: 'all',
+      search: false,
+      searchTerm: ''
     }
   }
 
   render (){
+    const {categories, handleGetSearch} = this.props;
     return (
       <section className="home-content">
         <div className="container">
@@ -21,11 +26,12 @@ class Home extends Component {
             <div className="col-sm-3 left-sidebar">
               <h2>Categories</h2>
               <div className="panel panel-default category-products">
-                <ul>
+                <ul className="category-list">
+                  <li href="#" className={this.state.category === 'all' ? 'active' : undefined} onClick={() => this.handleSetProducts()} key={0}>ALL PRODUCTS</li>
                   {
-                    this.props.categories &&
-                    this.props.categories.map(category => {
-                      return <li href="#" key={category.id}>{category.name}</li>
+                    categories &&
+                    categories.map(category => {
+                      return <li href="#" className={this.state.category === category.name ? 'active' : undefined} onClick={() => this.handleSetCategory(category)} key={category.id}>{category.name}</li>
                     })
                   }
                 </ul>
@@ -35,23 +41,24 @@ class Home extends Component {
               <div className="col-sm-12">
                 <div className="search_box">
                   <div className="input-group">
-                  <input type="text" className="form-control" placeholder="Search our amazing smart home products" />
+                  <input onChange={event => this.onInputChange(event.target.value)} value={this.state.term} type="text" className="form-control" placeholder="Search our amazing smart home products" />
                   <span className="input-group-btn">
-                    <button className="btn btn-default" type="button">Search</button>
+                    <button className="btn btn-default" type="button" onClick={() => this.handleSetSearch()}>Search</button>
                   </span>
                   </div>
                 </div>
               </div>
+              <div className="col-sm-12">
+                  <hr />
+              </div>
               <div className="col-sm-12 product-content">
-                <h2 className="title text-center">Our Products</h2>
+                <h2 className="product-grid-title">
+                {this.state.category === 'all' ? 'ALL PRODUCTS' : this.renderTermOrCategory()}
+                </h2>
               </div>
               <div className="product-grid">
                   {
-                    this.props.categories &&
-                    !this.props.products ?
-                    this.props.categories.map(category => {
-                      return <CategoryPanel key={category.id} category={category} />
-                    }) :
+                    this.props.categories.length > 0 &&
                     this.renderProducts()
                   }
               </div>
@@ -62,22 +69,42 @@ class Home extends Component {
     )
   }
 
-  onInputChange(input){
-    this.setState({term: input})
+  renderTermOrCategory() {
+    return this.state.search ? this.state.searchTerm : this.state.category
   }
 
-  handleSearch() {
-    {/* dispatch action to make axios request to get products that match the search */}
+  onInputChange(term){
+    this.setState({term})
   }
 
   renderProducts() {
-    return this.props.products.map(product => {
-      return <ProductPanel product={product} key={product.id} />
-    })
+    if (!this.props.products.length) {
+      return <div className="col-sm-12"><h2>No Products Found.</h2></div>
+    } else {
+      return this.props.products.map(product => {
+        return <ProductPanel product={product} key={product.id} />
+      })
+    }
   }
 
-  handleCategoryFilter() {
-    {/* dispatch action to make axios request to get products for category */}
+  handleSetSearch() {
+    if (this.state.term) {
+      this.setState({search: true, category: '', searchTerm: this.state.term},
+      () => this.props.handleGetSearch(this.state.term)
+      );
+    }
+  }
+
+  handleSetCategory(category) {
+    this.setState({category: category.name, term: '', search: false},
+    () => this.props.handleGetCategory(category.id)
+    );
+  }
+
+  handleSetProducts() {
+    this.setState({category: 'all', term: '', search: false},
+    () => this.props.handleGetProducts()
+    );
   }
 
   clearFilters() {
@@ -94,4 +121,18 @@ const mapState = (state) => {
   }
 }
 
-export default connect(mapState)(Home)
+const mapDispatch = (dispatch) => {
+  return {
+    handleGetCategory(categoryId) {
+      dispatch(fetchCategoryThunk(categoryId))
+    },
+    handleGetProducts() {
+      dispatch(fetchProducts())
+    },
+    handleGetSearch(term) {
+      dispatch(fetchSearchThunk(term))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(Home)

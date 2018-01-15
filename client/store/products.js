@@ -22,7 +22,21 @@ const getProducts = products => ({type: GET_PRODUCTS, products})
  */
 export const fetchProducts = () =>
   dispatch =>
-    axios.get('/api/products')
+    axios.get('/api/products/')
+      .then(res =>
+        dispatch(getProducts(res.data || defaultProduct)))
+      .catch(err => console.log(err))
+
+export const fetchCategoryThunk = (categoryId) =>
+  dispatch =>
+    axios.get(`/api/categories/${categoryId}`)
+      .then(res =>
+        dispatch(getProducts(res.data || defaultProduct)))
+      .catch(err => console.log(err))
+
+export const fetchSearchThunk = (term) =>
+  dispatch =>
+    axios.get(`/api/search/${term}`)
       .then(res =>
         dispatch(getProducts(res.data || defaultProduct)))
       .catch(err => console.log(err))
