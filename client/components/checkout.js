@@ -10,7 +10,7 @@ import _ from 'lodash'
 const Checkout = (props) => {
   const { cart, products, checkout, stateList, 
     handleFirstNameChange, handleLastNameChange, handleStreet1Change, handleStreet2Change, handleStateChange, handleZipChange,
-    handlePhoneChange, handleEmailChange, handleSubmit } = props
+    handlePhoneChange, handleEmailChange, handleSubmit, warningList } = props
 
   return (
     <div>
@@ -104,7 +104,15 @@ const mapState = (state) => {
     checkout: state.checkout,
     stateList: ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", 
       "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY",
-      "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
+      "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"],
+    warningList: {
+      'warnings': null,
+      'name': 'Invalid first or last name.',
+      'email': 'Invalid email.',
+      'phone': 'Invalid phone number - number must include area code.',
+      'street': 'Invalid street address.',
+      'zip': 'Invalid zip code.'
+    }
   }
 }
 
@@ -136,6 +144,7 @@ const mapDispatch = (dispatch, ownProps) => {
     },
     handleSubmit (checkout, evt) {
       evt.preventDefault()
+      if (!firstName || !lastName) console.log(ownProps.warningList)
       dispatch(postOrder(checkout, ownProps.history))
     }
   }

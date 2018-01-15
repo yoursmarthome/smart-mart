@@ -46,7 +46,7 @@ function Cart (props){
               }
               </h4>
               <div className="col-sm-4 col-sm-offset-4">
-                <Link to='/checkout'><button className="btn btn-success btn-block">Checkout</button></Link>
+              { view === 'checkout' ? null : <Link to='/checkout'><button className="btn btn-success btn-block">Checkout</button></Link> }
               </div>
             </div>
           </div>
