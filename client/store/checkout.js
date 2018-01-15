@@ -48,7 +48,6 @@ export const writeZip = zip => ({ type: WRITE_ZIP, zip })
 //  * THUNK CREATORS
 //  */
 export function postOrder(checkout, history) {
-  console.log('checkout', checkout)
   return function thunk(dispatch) {
     return axios.post('/api/orders', checkout)
       .then(res => res.data)
