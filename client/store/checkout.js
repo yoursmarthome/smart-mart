@@ -49,7 +49,7 @@ export const writeZip = zip => ({ type: WRITE_ZIP, zip })
 //  */
 export function postOrder(checkout, token, history) {
   return function thunk(dispatch) {
-    return axios.post('/api/orders', {checkout, token})
+    return axios.post('/api/orders', {checkout, token: token.id})
       .then(res => res.data)
       .then(order => {
         const action = getOrder(order)
