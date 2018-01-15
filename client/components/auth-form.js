@@ -2,11 +2,12 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {withRouter, Link} from 'react-router-dom'
 
 /**
  * COMPONENT
  */
-const AuthForm = (props) => {
+function AuthForm (props) {
   const {name, displayName, handleSubmit, error} = props
 
   return (
@@ -14,7 +15,7 @@ const AuthForm = (props) => {
       <div className="container">
         <div className="row">
           <div className="col-sm-4 col-sm-offset-4 well">
-            <h2 className="title text-center login-title">Login</h2>
+            <h2 className="title text-center login-title">{displayName}</h2>
             <form className="" onSubmit={handleSubmit} name={name}>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
@@ -33,6 +34,12 @@ const AuthForm = (props) => {
             </form>
             <a href="/auth/google"><div className="google-signin"></div></a><br/>
             <a href="/auth/facebook"><div className="facebook-signin"></div></a>
+            {
+              name === 'login' ?
+              <p className="signup-login-link">Don't have an account? <Link to="/signup">Sign Up</Link></p> :
+              <p className="signup-login-link">Already have an account? <Link to="/login">Login</Link></p>
+            }
+
           </div>
         </div>
       </div>

@@ -588,7 +588,6 @@ ul.sub-menu {
 
 .category-panel {
     padding: 10px;
-    min-height: 445px;
     border-color: #EEE;
 }
 
@@ -667,6 +666,12 @@ ul.sub-menu {
     right: 0;
 }
 
+.category-name {
+    margin-top: 15px;
+    height: 2.6em;
+    overflow: hidden;
+}
+
 .category-products {
     border: 1px solid #F7F7F0;
     margin-bottom: 0;
@@ -676,7 +681,7 @@ ul.sub-menu {
 
 .category-panel p {
     font-size: 16px;
-    font-weigth: 400;
+    font-weight: 400;
 }
 
 .left-sidebar h2,
@@ -1460,6 +1465,15 @@ h2.title {
 *******login page CSS******
 **************************/
 
+.signup-login-link {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.signup-login-link a {
+    font-size: 16px;
+}
+
 .login-content {
     padding-top: 50px;
 }
@@ -1467,6 +1481,10 @@ h2.title {
 .login-content .well {
     z-index: 0;
     border-color: #eee;
+}
+
+h2.login-title {
+    margin-top: 0;
 }
 
 h2.login-title:before {
@@ -1597,6 +1615,68 @@ h2.login-title:after {
 /*************************
 *******Cart CSS******
 **************************/
+
+.clear-cart {
+    cursor: pointer;
+}
+
+.cart-item .remove {
+    cursor: pointer;
+}
+
+.cart-content {
+    padding-top: 35px;
+}
+
+.cart-content .panel {
+    z-index: 0;
+    padding-bottom: 30px;
+}
+
+.cart-content .qty-list li {
+    padding-top: 0;
+}
+
+.cart-content .remove-item-btn {
+    padding: 5px 12px;
+}
+
+.cart-content .add-item-btn {
+    padding: 5px 10px;
+}
+
+.cart-content h2.title {
+    margin-bottom: 10px;
+}
+
+.cart-content h2.title:before {
+    content: " ";
+    position: absolute;
+    background: #fff;
+    bottom: -6px;
+    width: 100px;
+    height: 30px;
+    z-index: -1;
+    left: 50%;
+    margin-left: -50px;
+}
+
+.cart-content .not-bold {
+    font-weight: normal;
+}
+
+.cart-content .cart-totals {
+    padding-top: 5px;
+    padding-bottom: 30px;
+}
+
+.cart-list {
+    padding-left: 0;
+}
+
+.cart-list li {
+    padding-top: 25px;
+}
 
 #do_action {
     margin-bottom: 50px;

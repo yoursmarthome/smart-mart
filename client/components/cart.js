@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import { clearCart, removeItem, addToCart } from '../store'
 import _ from 'lodash'
-import Checkout from './checkout'
+import CartItem from './cart-item'
 
 function Cart (props){
   const { cart, cartTotal, products, handleCartClear, handleItemRemove, handleAddToCart } = props
@@ -11,31 +11,43 @@ function Cart (props){
     <div className="cart-content">
       <div className="container">
         <div className="row">
-          <div className="col-sm-12">
-            <h2>Cart</h2>
-            <button onClick={() => handleCartClear()}>Clear Cart</button>
-            <ul>
+          <div className="col-sm-8 col-sm-offset-2 panel panel-default">
+            <h2 className="title text-center">
+              Cart
+            </h2>
+            <a className="clear-cart" onClick={() => handleCartClear()}>Clear Cart</a>
+            <ul className="cart-list">
               {
                 cart.length && products.length ?
                 cart.map(item => {
                   const product = _.find(products, { id: item.id })
-                  return (
-                    <li key={item.id}>
-                      <button className='remove-item-cart' onClick={() => handleAddToCart(item.id, product.price)}>+</button>
-                      <h4>{product.name}</h4>
-                      <h4>{item.quantity}</h4>
-                      <h4>{'$'+ ((+product.price * +item.quantity).toFixed(2))}</h4>
-                      <button className='remove-item-cart' onClick={() => handleItemRemove(item.id)}>-</button>
-                    </li>
-                  )
+                  return <CartItem key={item.id} item={item} product={product} />
                 }) :
                 <li>No items in cart.</li>
               }
             </ul>
-            <div>
+            <div className="text-center cart-totals">
+              <h4><span className="not-bold">
+                {'Items: '}
+              </span>
               {
-                'Total: $' + cartTotal
+                props.cart.length ?
+                props.cart.reduce((itemCount, item) => {
+                  itemCount += item.quantity
+                  return itemCount
+                }, 0) :
+                '0'
               }
+              <span className="not-bold">
+                {' | Total: $' }
+              </span>
+              {
+                cartTotal
+              }
+              </h4>
+              <div className="col-sm-4 col-sm-offset-4">
+                <button className="btn btn-success btn-block">Checkout</button>
+              </div>
             </div>
           </div>
         </div>
