@@ -10,6 +10,7 @@ const GET_CART = 'GET_CART'
 const ADD_TO_CART = 'ADD_TO_CART'
 const CLEAR_CART = 'CLEAR_CART'
 const REMOVE_ITEM = 'REMOVE_ITEM'
+const REMOVE_ALL_ITEM = 'REMOVE_ALL_ITEM'
 
 /**
  * INITIAL STATE
@@ -33,6 +34,19 @@ export const removeItem = id => {
       currentCart.myCart[index].quantity--
       currentCart.total = ((currentCart.total - item.price) * 1).toFixed(2)
       if (currentCart.myCart[index].quantity === 0) currentCart.myCart.splice(index, 1)
+    }
+  })
+  let stringCart = JSON.stringify(currentCart)
+  localStorage.setItem('cart', stringCart)
+  return {type: REMOVE_ITEM, currentCart}
+}
+
+export const removeAllItem = id => {
+  const currentCart = JSON.parse(localStorage.getItem('cart'))
+  currentCart.myCart.forEach((item, index) => {
+    if (item.id === id) {
+      currentCart.total = (currentCart.total - (item.price * item.quantity) * 1).toFixed(2)
+      currentCart.myCart.splice(index, 1)
     }
   })
   let stringCart = JSON.stringify(currentCart)

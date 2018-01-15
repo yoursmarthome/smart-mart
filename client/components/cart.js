@@ -6,7 +6,7 @@ import _ from 'lodash'
 import CartItem from './cart-item'
 
 function Cart (props){
-  const { cart, cartTotal, products, handleCartClear, handleItemRemove, handleAddToCart } = props
+  const { cart, cartTotal, products, handleCartClear, handleItemRemove, handleAddToCart, view } = props
   return (
     <div className="cart-content">
       <div className="container">
@@ -21,7 +21,7 @@ function Cart (props){
                 cart.length && products.length ?
                 cart.map(item => {
                   const product = _.find(products, { id: item.id })
-                  return <CartItem key={item.id} item={item} product={product} />
+                  return <CartItem key={item.id} item={item} product={product} view={view || 'cart'}/>
                 }) :
                 <li>No items in cart.</li>
               }
@@ -46,7 +46,7 @@ function Cart (props){
               }
               </h4>
               <div className="col-sm-4 col-sm-offset-4">
-                <button className="btn btn-success btn-block">Checkout</button>
+                <Link to='/checkout'><button className="btn btn-success btn-block">Checkout</button></Link>
               </div>
             </div>
           </div>

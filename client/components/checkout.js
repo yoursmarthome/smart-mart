@@ -4,6 +4,7 @@ import {withRouter, Link} from 'react-router-dom'
 import { writeFirstName, writeLastName, writeEmail, 
   writePhone, writeStreet, writeStreet2, changeState, writeZip,
   postOrder } from '../store'
+import Cart from './cart'
 import _ from 'lodash'
 
 const Checkout = (props) => {
@@ -91,6 +92,7 @@ const Checkout = (props) => {
           </span>
         </div>
       </form>
+      <Cart view='checkout' />
     </div>
   )
 }
