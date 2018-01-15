@@ -157,7 +157,7 @@ const categories = [
       {
         name: 'Google - Home Max - Charcoal',
         description: "Hear every note as the artist intended. Feel every beat with heart-pounding bass. Meet Google Home Max. It's Google's ultimate speaker, made for your music. You get deep layers of balanced bass along with crystal-clear highs. No unwanted resonance. No muddiness. Just pure sound that fills the room. Room EQ adjusts the sound based on where you place it. Media EQ fine tunes the speaker so every song sounds its best. It's software that keeps getting smarter thanks to automatic updates.",
-        photo:'../assets/images/products/Google_Home_Max_ch1.jpg',
+        photo:'../assets/images/products/Google_Home_Max_Ch1.jpg',
         rating: 5,
         price: 399.99
       }
