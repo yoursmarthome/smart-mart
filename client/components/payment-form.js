@@ -11,7 +11,6 @@ export default class PaymentForm extends React.Component {
   }
 
   onToken(token) {
-    token = JSON.stringify(token);
     this.props.callback(token);
   }
 

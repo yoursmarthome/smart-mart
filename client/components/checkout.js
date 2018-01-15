@@ -37,20 +37,21 @@ class Checkout extends Component {
   }
 
   paymentCallback(token) {
-    const {checkout, warningList} = this.props;
-    this.props.handleSubmit(checkout, warningList, token);
+    // console.log('payment callBack', token)
+    const {checkout} = this.props;
+    this.props.handleSubmit(checkout, token);
     this.setState({view: 'done'});
   }
 
   renderCheckoutForm() {
     const { checkout, stateList,
       handleFirstNameChange, handleLastNameChange, handleStreet1Change, handleStreet2Change, handleStateChange, handleZipChange,
-      handlePhoneChange, handleEmailChange, handleSubmit, warningList } = this.props
+      handlePhoneChange, handleEmailChange, handleSubmit } = this.props
 
     return (
           <div>
             <div className="col-sm-4">
-              <form id="new-message-form" onSubmit={evt => handleSubmit(checkout, warningList, evt)}>
+              <form id="new-message-form">
                 <div className="form-group">
                   <label htmlFor="firstName">First Name</label>
                   <input
