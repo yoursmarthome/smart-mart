@@ -200,8 +200,8 @@ db.sync({force: true})
   .then(() => {
     console.log('Successfully seeded db!')
     console.log('closing db connection')
-    db.close()
     console.log('db connection closed')
+    return null
   })
 
 console.log('seeding...')
