@@ -4,17 +4,27 @@ import {withRouter, Link} from 'react-router-dom'
 import { writeFirstName, writeLastName, writeEmail, 
   writePhone, writeStreet, writeStreet2, changeState, writeZip,
   postOrder } from '../store'
+import Cart from './cart'
 import _ from 'lodash'
 
 const Checkout = (props) => {
   const { cart, products, checkout, stateList, 
     handleFirstNameChange, handleLastNameChange, handleStreet1Change, handleStreet2Change, handleStateChange, handleZipChange,
-    handlePhoneChange, handleEmailChange, handleSubmit } = props
+    handlePhoneChange, handleEmailChange, handleSubmit, warningList } = props
 
   return (
     <div>
+      <div className="warning-list">
+        {
+          warningList['warnings'].length !== 0
+          ? warningList['warnings'].map((warning) => {
+            <p>{warningList[warning]}</p>
+          })
+          : null
+        }
+      </div>
       <h2>Checkout</h2>
-      <form id="new-message-form" onSubmit={evt => handleSubmit(checkout, evt)}>
+      <form id="new-message-form" onSubmit={evt => handleSubmit(checkout, warningList, evt)}>
         <div className="input-group input-group-lg">
           <input
             className="form-control"
@@ -91,6 +101,7 @@ const Checkout = (props) => {
           </span>
         </div>
       </form>
+      <Cart view='checkout' />
     </div>
   )
 }
@@ -102,7 +113,15 @@ const mapState = (state) => {
     checkout: state.checkout,
     stateList: ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", 
       "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY",
-      "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
+      "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"],
+    warningList: {
+      'warnings': [],
+      'name': 'Invalid first or last name.',
+      'email': 'Invalid email.',
+      'phone': 'Invalid phone number - number must include area code.',
+      'street': 'Invalid street address.',
+      'zip': 'Invalid zip code.'
+    }
   }
 }
 
@@ -132,11 +151,35 @@ const mapDispatch = (dispatch, ownProps) => {
     handleEmailChange (evt) {
       dispatch(writeEmail(evt.target.value))
     },
-    handleSubmit (checkout, evt) {
+    handleSubmit (checkout, warningList, evt) {
       evt.preventDefault()
-      dispatch(postOrder(checkout, ownProps.history))
+      const validFields = checkFields (checkout, warningList)
+      console.log(validFields)
+      if (validFields) dispatch(postOrder(checkout, ownProps.history))
     }
   }
+}
+
+const checkFields = (checkout, warningList) => {
+  let passed = true
+  warningList['warnings'] = []
+  if (checkout.firstName.length === 0 || checkout.lastName.length === 0) {
+    warningList['warnings'].push('name')
+  }
+  if (checkout.email.length === 0) {
+    warningList['warnings'].push('email')
+  }
+  if (checkout.phone.length === 0 || checkout.phone.length !== 10) {
+    warningList['warnings'].push('phone')
+  }
+  if (checkout.street.length === 0) {
+    warningList['warnings'].push('street')
+  }
+  if (checkout.zip.length === 0 || checkout.zip.length !== 5) {
+    warningList['warnings'].push('zip')
+  }
+  if (warningList['warnings'].length) passed = false
+  return passed
 }
 
 export default connect(mapState, mapDispatch)(Checkout)

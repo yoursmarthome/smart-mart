@@ -22,11 +22,11 @@ const defaultCheckout = {
   firstName: '',
   lastName: '',
   email: '',
-  phone: 0,
+  phone: '',
   street: '',
   street2: '',
   state: 'AK',
-  zip: 0
+  zip: ''
 }
 
 /**
@@ -48,7 +48,6 @@ export const writeZip = zip => ({ type: WRITE_ZIP, zip })
 //  * THUNK CREATORS
 //  */
 export function postOrder(checkout, history) {
-  console.log('checkout', checkout)
   return function thunk(dispatch) {
     return axios.post('/api/orders', checkout)
       .then(res => res.data)
