@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:id', (req, res, next) => {
-  Product.findAll({where: {id: req.params.id}})
+  Product.findAll({where: {categoryId: req.params.id}})
     .then(products => res.json(products))
     .catch(next)
 })
