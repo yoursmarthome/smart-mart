@@ -191,6 +191,16 @@ db.sync({force: true})
       Category.create(category, { include: Product })
     }))
   })
-  .then(() => console.log('Successfully seeded db!'))
-  .catch(err => console.error('Error seeding db. Error:', err));
+  .catch(err => {
+    console.error('Error seeding db. Error:', err)
+    console.error(err.message)
+    console.error(err.stack)
+    process.exitCode = 1
+  })
+  .then(() => {
+    console.log('Successfully seeded db!')
+    console.log('closing db connection')
+    db.close()
+    console.log('db connection closed')
+  })
 console.log('seeding...')
