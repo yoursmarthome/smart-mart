@@ -22,11 +22,11 @@ const defaultCheckout = {
   firstName: '',
   lastName: '',
   email: '',
-  phone: 0,
+  phone: '',
   street: '',
   street2: '',
   state: 'AK',
-  zip: 0
+  zip: ''
 }
 
 /**
