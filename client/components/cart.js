@@ -15,7 +15,7 @@ function Cart (props){
             <h2 className="title text-center">
               Cart
             </h2>
-            <a className="clear-cart" onClick={() => handleCartClear()}>Clear Cart</a>
+            { view === 'checkout' ? null : <a className="clear-cart" onClick={() => handleCartClear()}>Clear Cart</a>  }
             <ul className="cart-list">
               {
                 cart.length && products.length ?
