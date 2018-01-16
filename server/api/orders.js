@@ -2,6 +2,27 @@ const router = require('express').Router()
 const {Order, LineItem} = require('../db/models')
 module.exports = router
 
+router.get('/:id', (req, res, next) => {
+//   LineItem.findAll({
+//     include: [{model: Order,
+//        where: ({userId: req.params.id})
+//       }]})
+//   .then((order) => res.json(order))
+//   .catch(next)
+// })
+
+
+  Order.findAll({
+    where:
+      {userId: req.params.id},
+      include: [LineItem]
+
+  })
+    .then((order) => res.json(order))
+    .catch(next)
+})
+
+
 router.post('/', (req, res, next) => {
   console.log(req.body.cart)
   let cartAmount = req.body.cart.total *100
