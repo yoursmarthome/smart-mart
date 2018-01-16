@@ -1,24 +1,49 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
-import {getCategory, addToCart} from '../store'
+import ReactImageMagnify from 'react-image-magnify';
+import AddToCartButton from './add-to-cart-btn'
 
 const SingleProduct = (props) => {
-  const { product, handleAddToCart } = props
+  const { product } = props
 
   return (
-    <div>
-      {
-        !product ? null :
-        <div>
-          <img src={product.photo} />
-          <h3>{product.name}</h3>
-          <p>{product.description}</p>
-          <p>{product.price}</p>
-          <button onClick={() => handleAddToCart(product.id, product.price)}>Add to Cart</button>
+    <div className="single-product-content">
+      <div className="container">
+        <div className="row">
+        {
+          !product ? null :
+          <div>
+            <div className="col-sm-4 single-product_img">
+              <ReactImageMagnify {...{
+                  smallImage: {
+                      isFluidWidth: true,
+                      src: product.photo,
+                      srcSet: [
+                          `${product.photo} 687w`,
+                          `${product.photo} 770w`,
+                          `${product.photo} 861w`,
+                          `${product.photo} 955w`
+                      ].join(', '),
+                      sizes: '(min-width: 480px) 30vw, 80vw'
+                  },
+                  largeImage: {
+                      alt: '',
+                      src: product.photo,
+                      width: 1200,
+                      height: 1200
+                  }
+              }} />
+            </div>
+            <div className="col-sm-8">
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <h4>${product.price}</h4>
+              <AddToCartButton product={product} />
+            </div>
+          </div>
+        }
         </div>
-      }
+      </div>
     </div>
   )
 }
@@ -33,12 +58,4 @@ const mapState = (state, ownProps) => {
   }
 }
 
-const mapDispatch = (dispatch) => {
-  return {
-    handleAddToCart (id, price) {
-      dispatch(addToCart(id, price))
-    }
-  }
-}
-
-export default connect(mapState, mapDispatch)(SingleProduct)
+export default connect(mapState)(SingleProduct)

@@ -7,16 +7,16 @@ import CartItem from './cart-item'
 
 class Cart extends Component {
   componentDidMount() {
+    console.log(this.props.cart)
     if (this.props.cart.length) {
       this.props.handleFetchProducts(this.props.cart)
     }
   }
 
-  componentWillUpdate(nextProps) {
-    if (nextProps.cart.length !== this.props.cart.length) {
-      if (nextProps.cart.length) {
-        this.props.handleFetchProducts(this.props.cart)
-      }
+  componentDidUpdate(prevProps) {
+    console.log(this.props.cart)
+    if (prevProps.cart.length !== this.props.cart.length) {
+      this.props.handleFetchProducts(this.props.cart)
     }
   }
 
@@ -37,7 +37,9 @@ class Cart extends Component {
                   cart.length && products.length ?
                   cart.map(item => {
                     const product = _.find(products, { id: item.id })
-                    return <CartItem key={item.id} item={item} product={product} view={view || 'cart'}/>
+                    if (product) {
+                      return <CartItem key={item.id} item={item} product={product} view={view || 'cart'}/>
+                    }
                   }) :
                   <li>No items in cart.</li>
                 }

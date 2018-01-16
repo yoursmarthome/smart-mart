@@ -354,6 +354,16 @@ ul.sub-menu {
     border: 1px solid #f5f5f5;
 }
 
+.no-border {
+    border-color: #fff;
+    color: #5cb85c !important;
+}
+
+.no-border:hover, .no-border:active, .no-border:focus, .no-border:visited {
+    background: #fff;
+    border-color: #fff;
+}
+
 .product-grid-title {
     color: #333;
     font-family: 'Roboto', sans-serif;
@@ -2650,4 +2660,16 @@ textarea {
 
 .contact-info .social-networks ul li a:hover {
     color: #FE980F;
+}
+
+/*************************
+******* Single Product ******
+**************************/
+
+.single-product-content {
+    padding-top: 35px;
+}
+
+.single-product-content .single-product_img {
+    z-index: 100;
 }
