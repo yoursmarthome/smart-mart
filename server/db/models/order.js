@@ -30,35 +30,35 @@ const Order = db.define('order', {
     allowNull: false
   },
   zip: {
-    type: Sequelize.BIGINT,
-    allowNull: false,
-    set(zipToInt) {
-      this.setDataValue('zip', parseInt(zipToInt))
-    },
-    validate: {
-      len: {
-        args: 5,
-        msg: 'Invalid zip code length'
-      },
-      // max: 99999
-    }
+    type: Sequelize.STRING
+    // allowNull: false,
+    // set(zipToInt) {
+    //   this.setDataValue('zip', parseInt(zipToInt))
+    // },
+    // validate: {
+    //   len: {
+    //     args: 5,
+    //     msg: 'Invalid zip code length'
+    //   },
+    //   // max: 99999
+    // }
   },
   phone: {
-    type: Sequelize.BIGINT,
-    allowNull: false,
-    set(withoutHyphs) {
-      this.setDataValue(
-        'phone', 
-        parseInt(withoutHyphs.replace(new RegExp('-', 'g'), ''))
-      )
-    },
-    validate: {
-      len: {
-        args: 10,
-        msg: 'Phone number must be 10 digits (include area code!)'
-      }
-      // max: 9999999999
-    }
+    type: Sequelize.STRING,
+    allowNull: false
+    // set(withoutHyphs) {
+    //   this.setDataValue(
+    //     'phone',
+    //     parseInt(withoutHyphs.replace(new RegExp('-', 'g'), ''))
+    //   )
+    // },
+    // validate: {
+    //   len: {
+    //     args: 10,
+    //     msg: 'Phone number must be 10 digits (include area code!)'
+    //   }
+    //   // max: 9999999999
+    // }
   },
   email: {
     type: Sequelize.STRING,

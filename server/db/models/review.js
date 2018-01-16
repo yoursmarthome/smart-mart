@@ -11,7 +11,7 @@ const Review = db.define('review', {
     type: Sequelize.TEXT
   },
   rating: {
-    type: Sequelize.INTEGER
+    type: Sequelize.BIGINT
   }
 })
 

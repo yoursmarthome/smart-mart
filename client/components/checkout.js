@@ -38,8 +38,8 @@ class Checkout extends Component {
 
   paymentCallback(token) {
     // console.log('payment callBack', token)
-    const {checkout} = this.props;
-    this.props.handleSubmit(checkout, token);
+    const {checkout, cart, user} = this.props;
+    this.props.handleSubmit(checkout, token, cart, user);
     this.setState({view: 'done'});
   }
 
@@ -173,6 +173,7 @@ const mapState = (state) => {
   return {
     cart: state.cart,
     products: state.products,
+    user: state.user,
     checkout: state.checkout,
     stateList: ["AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID",
       "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY",
@@ -206,8 +207,8 @@ const mapDispatch = (dispatch, ownProps) => {
     handleEmailChange (evt) {
       dispatch(writeEmail(evt.target.value))
     },
-    handleSubmit (checkout, token) {
-      dispatch(postOrder(checkout, token, ownProps.history))
+    handleSubmit (checkout, token, cart, user) {
+      dispatch(postOrder(checkout, token, cart, user, ownProps.history))
       dispatch(clearCart())
     }
   }
