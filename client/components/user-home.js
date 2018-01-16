@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import PastOrders from './past-orders'
 
 /**
  * COMPONENT
@@ -14,6 +15,7 @@ export const UserHome = (props) => {
         <div className="row">
           <div className="col-md-12">
             <h3>Welcome, {email}</h3>
+            <PastOrders />
           </div>
         </div>
       </div>
