@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ReactImageMagnify from 'react-image-magnify';
 import AddToCartButton from './add-to-cart-btn'
+import StarRating from './star-rating'
 import Reviews from './reviews'
 import ReviewForm from './review-form'
 
@@ -38,6 +39,7 @@ const SingleProduct = (props) => {
             </div>
             <div className="col-sm-8">
               <h3>{product.name}</h3>
+              <StarRating {...props} />
               <p>{product.description}</p>
               <h4>${product.price}</h4>
               <AddToCartButton product={product} />
