@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import ReactImageMagnify from 'react-image-magnify';
 import AddToCartButton from './add-to-cart-btn'
 import Reviews from './reviews'
+import ReviewForm from './review-form'
 
 const SingleProduct = (props) => {
   const { product } = props
@@ -46,7 +47,8 @@ const SingleProduct = (props) => {
         </div>
       </div>
       <div>
-        <Reviews product={product}/>
+        <Reviews product={product} />
+        <ReviewForm product={product} />
       </div>
     </div>
   )
