@@ -11,7 +11,7 @@ const categories = [
         name: 'Google - Home - White/Slate fabric',
         description: 'Simplify your everyday life with the Google Home, a voice-activated speaker powered by the Google Assistant. Use voice commands to enjoy music, get answers from Google and manage everyday tasks. Google Home is compatible with Android and iOS operating systems, and can control compatible smart devices such as Chromecast or Nest.',
         photo: '../assets/images/products/Google_Home_3.jpg',
-        rating: 5,
+        rating: 3,
         price: 128.99
       },
       {
@@ -25,14 +25,14 @@ const categories = [
         name: 'Google - Home Mini - Charcoal',
         description: 'Get hands-free help in any room. Google Home Mini is powered by the Google Assistant, so you can ask it questions and tell it to do things. Just start with "Ok Google" to get answers from Google, tackle your day, enjoy your entertainment, and control your smart home. And when you ask for help, it can tell your voice from others for a more personalized experience. Google Home Mini works on its own or you can have a few around the house, giving you the power of Google anywhere.',
         photo: '../assets/images/products/Google_Home_Mini_ch1.jpg',
-        rating: 5,
+        rating: 4,
         price: 48.99
       },
       {
         name: 'Google - Home & Google Home Mini in Chalk Package',
         description: 'Simplify your everyday life with the Google Home, a voice-activated speaker powered by the Google Assistant. Use voice commands to enjoy music, get answers from Google and manage everyday tasks. Google Home is compatible with Android and iOS operating systems, and can control compatible smart devices such as Chromecast or Nest.',
         photo: '../assets/images/products/Google_Home_Package.jpg',
-        rating: 5,
+        rating: 2,
         price: 157.99
       },
       {
@@ -53,14 +53,14 @@ const categories = [
         name: 'Amazon - Echo Dot (2nd Generation) - Black',
         description: 'Deliver your favorite playlist anywhere in your home with the Amazon Echo Dot voice-controlled device. Control most electric devices through voice activation, or schedule a ride with Uber and order a pizza. The Amazon Echo Dot voice-controlled device turns any home into a smart home with the Alexa app on a smartphone or tablet.',
         photo: '../assets/images/products/Amazon_Echo_Dot1.jpg',
-        rating: 5,
+        rating: 4,
         price: 49.99
       },
       {
         name: 'Amazon - Echo Dot (2nd Generation) - White',
         description: 'Deliver your favorite playlist anywhere in your home with the Amazon Echo Dot voice-controlled device. Control most electric devices through voice activation, or schedule a ride with Uber and order a pizza. The Amazon Echo Dot voice-controlled device turns any home into a smart home with the Alexa app on a smartphone or tablet.',
         photo: '../assets/images/products/Amazon_Echo_Dot1.jpg',
-        rating: 5,
+        rating: 4,
         price: 49.99
       },
       {
@@ -81,14 +81,14 @@ const categories = [
         name: 'Philips - Hue Bloom Dimmable LED Smart Table Lamp - White',
         description: 'Create indirect ambient lighting in any room with this Philips Hue Bloom lamp. It lets you choose from 16 million colors to create fun effects, and you can sync its operation with movies or music using a compatible app. Use your smartphone or tablet to control light levels and set timers on this Philips Hue Bloom lamp.',
         photo: '../assets/images/products/Philips_Hue_Bloom_Table_Lamp2.jpg',
-        rating: 5,
+        rating: 3,
         price: 59.99
       },
       {
         name: 'Philips - Hue Lightstrip Plus Dimmable LED Smart Light - Multicolor',
         description: 'Add a creative glow to any corner of your space with this 6.6-foot Philips Hue LED light strip. Its multicolored, dimmable lights suit any desired ambience, and it lets you sync its movement with music or movies via third-party apps. Bend, shape and cut this Philips Hue LED light strip for flexible customization.',
         photo: '../assets/images/products/Phillips_Hue_Lightstrip1.jpg',
-        rating: 5,
+        rating: 2,
         price: 85.99
       },
       {
@@ -102,21 +102,21 @@ const categories = [
         name: 'Philips - Hue White and Color Ambiance A19 Wi-Fi Smart LED Bulb - Multicolor',
         description: 'Set a beautiful mood with this Philips hue white and color ambiance bulb that works with your existing hue system. The soft flattering colors set a tone, and you can sync your lights depending on your activities through the corresponding app. This Philips hue white and color ambiance bulb offers 16 million choices in both warm and cool for versatility.',
         photo: '../assets/images/products/Philips_White_Color_Bulb3.jpg',
-        rating: 5,
+        rating: 1,
         price: 49.99
       },
       {
         name: 'Philips - Hue White Ambiance E12 Wi-Fi Smart LED Decorative Candle Bulb - White',
         description: 'Produce a welcoming ambience in your room with this Philips Hue candle bulb. It lets you wake up naturally by gradually increasing the light when you need it, and it allows you to go to sleep by slowly dimming the candle. Integrate this Philips Hue candle bulb with your smartphone for even more options.',
         photo: '../assets/images/products/Philips_Decorative_Light_Bulb1.jpg',
-        rating: 5,
+        rating: 3,
         price: 29.99
       },
       {
         name: 'Nanoleaf - Aurora Rhythm Smarter Kit',
         description: 'Interpret music visually with this Nanoleaf Aurora Rhythm starter kit. Its nine LED panels can make almost any shape imaginable, and the included upgrade module transforms music into color-changing light shows. This Nanoleaf Aurora Rhythm starter kit works with the Nanoleaf Aurora app, so you can customize the display via a mobile device.',
         photo: '../assets/images/products/Nanoleaf_Aurora_Starter1.jpg',
-        rating: 5,
+        rating: 4,
         price: 229.99
       },
       {
@@ -130,14 +130,14 @@ const categories = [
         name: 'Philips - hue Tap Remote Switch - White',
         description: 'Take your smart lighting controls to the next level by accessing up to four light scenes with the push of a button. Great as a backup when your smartphone is charging or in use, the hue tap provides wireless, touch-powered control from room to room',
         photo: '../assets/images/products/Philips_Tap1.jpg',
-        rating: 5,
+        rating: 3,
         price: 52.99
       },
       {
         name: 'Lutron - Caseta Wireless Smart Lighting Dimmer Switch Starter Kit - White',
         description: 'Light up your home before you arrive with this Caseta wireless dimmer kit. The complete setup includes the Smart Bridge and app, so you can connect with HomeKit technology from the moment you install. Wallplates and Pico remotes with this Caseta wireless dimmer kit complete the collection for smart-enabled wall and ceiling lighting.',
         photo: '../assets/images/products/Lutron_Dimmer_Kit1.jpg',
-        rating: 5,
+        rating: 4,
         price: 99.99
       }
     ]

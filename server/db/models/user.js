@@ -18,6 +18,10 @@ const User = db.define('user', {
       notEmpty: true
     }
   },
+  role: {
+    type: Sequelize.ENUM('user', 'admin'),
+    defaultValue: 'user'
+  },
   salt: {
     type: Sequelize.STRING
   },
