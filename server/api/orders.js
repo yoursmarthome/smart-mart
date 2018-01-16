@@ -1,22 +1,24 @@
 const router = require('express').Router()
-const {Order} = require('../db/models')
+const {Order, LineItem} = require('../db/models')
 module.exports = router
 
 router.post('/', (req, res, next) => {
-  // console.log('req.body', req.body);
-  // Process Stripe payment using token
+  console.log(req.body.cart)
+  let cartAmount = req.body.cart.total *100
 
-  // Create an Order with associated line items
+  let lineItems = []
+  req.body.cart.myCart.forEach(item => {
+    console.log(item)
+    lineItems.push({productId: item.id, quantity: item.quantity})
+  })
+  const orderData = req.body.checkout
+  orderData.lineItems = lineItems
+  const userId = req.body.user.id
+  if (userId) {
+    orderData.userId = userId
+  }
+  console.log(orderData)
 
-  // Order.create(req.body)
-  //   .then(order => res.json(order))
-  //   .catch(next)
-
-  // Set your secret key: remember to change this to your live secret key in production
-  // See your keys here: https://dashboard.stripe.com/account/apikeys
-  
-  
-  
   var stripe = require("stripe")("sk_test_kzTrRvfkJwIqeqdHXbuNQYHj");
 
   // // Token is created using Checkout or Elements!
@@ -26,7 +28,7 @@ router.post('/', (req, res, next) => {
   // Charge the user's card:
   new Promise ((resolve, reject) => {
     stripe.charges.create({
-      amount: 1000,
+      amount: cartAmount,
       currency: "usd",
       description: "Example charge",
       source: token,
@@ -36,7 +38,7 @@ router.post('/', (req, res, next) => {
     });
   })
     .then(() => {
-      // pass cart items down to here
-      // order.create, include line items
+      console.log('line Item', LineItem)
+      Order.create(orderData, {include: LineItem})
     })
 })

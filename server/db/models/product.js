@@ -14,11 +14,11 @@ const Product = db.define('product', {
     type: Sequelize.STRING
   },
   rating: {
-    type: Sequelize.INTEGER
+    type: Sequelize.BIGINT
     //needs to calculate average
   },
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.BIGINT,
     set(ogPrice) {
       this.setDataValue('price', ogPrice * 100)
     },

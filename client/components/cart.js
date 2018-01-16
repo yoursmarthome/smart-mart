@@ -12,9 +12,11 @@ class Cart extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.cart.length !== this.props.cart.length) {
-      this.props.handleFetchProducts(this.props.cart)
+  componentWillUpdate(nextProps) {
+    if (nextProps.cart.length !== this.props.cart.length) {
+      if (nextProps.cart.length) {
+        this.props.handleFetchProducts(this.props.cart)
+      }
     }
   }
 
