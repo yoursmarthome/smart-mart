@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {addToCart} from '../store'
+import AddToCartButton from './add-to-cart-btn'
 
-const ProductPanel = (props) => {
-  const { product, handleAddToCart } = props
+export default function ProductPanel(props) {
+  const { product } = props
 
   return (
     <div className="col-sm-4">
@@ -14,18 +15,8 @@ const ProductPanel = (props) => {
           <p className="category-name">{product.name}</p>
         </Link>
           <p className="product-price">${product.price}</p>
-        <button className="btn btn-default" onClick={() => handleAddToCart(product.id, product.price)}>Add To Cart</button>
+          <AddToCartButton product={product} />
       </div>
     </div>
   )
 }
-
-const mapDispatch = (dispatch) => {
-  return {
-    handleAddToCart (id, price) {
-      dispatch(addToCart(id, price))
-    }
-  }
-}
-
-export default connect(null, mapDispatch)(ProductPanel)
