@@ -255,7 +255,7 @@ const categories = [
       {
         name: 'Nest - Cam IQ Outdoor Security Camera - White',
         description: "Nest Cam IQ is a seriously sharp outdoor security camera. It has brains to tell you when it sees a person and Supersight to show you an extra clear close-up tracking shot of who’s there. It can even recognize familiar faces with Nest Aware.",
-        photo:'../assets/images/products/Nest_outdoor_cam1.jpg',
+        photo:'../assets/images/products/nest_outdoor_cam1.jpg',
         rating: 4,
         price: 349.99
       },
