@@ -44,13 +44,13 @@ const SingleProduct = (props) => {
               <h4>${product.price}</h4>
               <AddToCartButton product={product} />
             </div>
+            <div className="col-sm-8 reviews">
+              <Reviews product={product} />
+              <ReviewForm product={product} />
+            </div>
           </div>
         }
         </div>
-      </div>
-      <div>
-        <Reviews product={product} />
-        <ReviewForm product={product} />
       </div>
     </div>
   )

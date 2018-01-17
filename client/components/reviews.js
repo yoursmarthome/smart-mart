@@ -14,7 +14,7 @@ class Reviews extends Component {
       this.props.handleFetchReviews(this.props.product.id)
     }
   }
-  
+
   render() {
     const { reviews } = this.props
 

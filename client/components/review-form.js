@@ -19,7 +19,7 @@ class ReviewForm extends Component {
     const { product, user, handleSubmit } = this.props
 
     return (
-      <div>
+      <div className="review-form">
         { !user.id 
         ? <div className="col-sm-12">
             <h3>Sign In Or Sign Up To Leave a Review!</h3>
@@ -75,6 +75,7 @@ const mapState = (state) => {
     user: state.user
   }
 }
+
 
 const mapDispatch = (dispatch) => {
   return {
