@@ -21,7 +21,7 @@ class ReviewForm extends Component {
     const { product } = this.props
     console.log(product)
     return (
-      <div>
+      <div className="review-form">
         <h3> Write a Review</h3>
         <form>
           <label> Title </label>
