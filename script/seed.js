@@ -167,20 +167,101 @@ const categories = [
     name: 'Temperature Control',
     description: 'To control your temperature.',
     photo: '',
-    products: []
+    products: [
+      {
+        name: 'Nest - Learning Thermostat - 3rd Generation - Black',
+        description: "Save money with this Nest Third Generation Learning thermostat. The corresponding app lets you track energy usage and get tips on energy conservation, so you save an average of 10-15 percent on your heating and cooling bills. This Nest Third Generation Learning thermostat programs itself to adjust the temperature according to your schedule.",
+        photo:'../assets/images/products/Nest_thermo_black1.jpg',
+        rating: 5,
+        price: 247.99
+      },
+      {
+        name: 'Nest - Learning Thermostat - 3rd Generation - Stainless Steel',
+        description: "Nest 3rd Generation Programmable Wi-Fi Learning Thermostat: Take control of your home's heating and cooling without lifting a finger with this thermostat, which learns your habits and adjusts to automatically regulate your home's temperature based on your schedule. The Nest Leaf feature alerts you when you choose a temperature that's energy efficient.",
+        photo:'../assets/images/products/Nest_Thermo_Silver1.jpg',
+        rating: 5,
+        price: 249.99
+      },
+      {
+        name: 'Nest - Thermostat E - white',
+        description: "Its simple design and new frosted display blend into the background. With proven energy-saving features, the Nest Thermostat E can help you save from day one. And you can change the temperature from anywhere – the beach, the office or your bed.",
+        photo:'../assets/images/products/Nest_White_1.jpg',
+        rating: 4,
+        price: 169.99
+      },
+      {
+        name: 'Ecobee - ecobee3 lite Smart Thermostat - Black',
+        description: "Ensure uncompromised comfort with this ecobee3 lite smart thermostat. Its DataRhythm technology provides intuitive temperature adjustment based on the current weather, family schedules, desired settings and information from room sensors for efficient operation. Control this Wi-Fi-enabled ecobee3 lite smart thermostat by voice or remotely from your Android or iOS device or Apple Watch.",
+        photo:'../assets/images/products/Ecobee3_lite1.jpg',
+        rating: 4,
+        price: 169.99
+      },
+      {
+        name: 'ecobee - ecobee4 Wi-Fi Thermostat with Room Sensor and Built-In Alexa Voice Service - Black',
+        description: "With built-in Alexa Voice Service, ecobee4 can listen to your voice commands and respond. Have it set a timer, read you the news, adjust the temperature, and more. It also comes with a room sensor that helps manage hot and cold spots in your home, delivering comfort in the rooms that matter. And because they can detect occupancy, they can automatically enable the right mode on your ecobee4 for energy savings when it senses no one is home.",
+        photo:'../assets/images/products/Ecobee4_thermo1.jpg',
+        rating: 5,
+        price: 249.99
+      },
+      {
+        name: 'ecobee - ecobee Remote Sensors (2-Pack) - White',
+        description: "The right temperature in the right places. These wireless room sensors work with ecobee4, ecobee3 Lite, and ecobee3 Wi-Fi smart thermostats.",
+        photo:'../assets/images/products/ecobees_sensors1.jpg',
+        rating: 3,
+        price: 66.99
+      }
+    ]
   },
   {
     name: 'Security Cameras',
     description: 'To light your house.',
     photo: '',
-    products: []
-  },
-  {
-    name: 'Appliances',
-    description: 'To control your temperature.',
-    photo: '',
-    products: []
+    products: [
+      {
+        name: 'Blink Home Security Camera System - 2 Camera Kit - White',
+        description: "With the Blink XT, you can now protect your entire home, inside and out, with the same video-first security that you have come to love. Blink is easy to set up, just a fraction of the cost of other home monitoring systems and has no subscription fees or data storage charges.",
+        photo:'../assets/images/products/Blink_White_1.jpg',
+        rating: 4,
+        price: 169.99
+      },
+      {
+        name: 'Blink XT Outdoor/Indoor Home Security Camera System for Your Smartphone - 3 Camera Kit - Black',
+        description: "Protect Your Entire Home, Inside & Out, With Blink XT Weatherproof Cameras. The Most Affordable, Battery Powered Outdoor Security Camera Available! A truly wire-free video home security camera & monitoring system with batteries that last for 2 year",
+        photo:'../assets/images/products/Blink_Black_1.jpg',
+        rating: 5,
+        price: 319.99
+      },
+      {
+        name: 'Camera Bulb VR Panoramic Bulb Camera with 360 Degree Fisheye Lens Wireless Wifi Camera Home Security System Camera Android IOS APP White',
+        description: "WIRELESS WIFI CONNECTIVITY:Fast and easy App setup, you will get guidance in every step from our 360 Eyes app.Remote access to the camera bulb on Smartphone via your mobile 4G network or WiFi. Allow users to access the wireless wifi lens camera using mobile phone.",
+        photo:'../assets/images/products/Camera_blub1.jpg',
+        rating: 3,
+        price: 49.99
+      },
+      {
+        name: 'Nest - Hello Smart Wi-Fi Video Doorbell',
+        description: "Interact with visitors at your door by using this Nest Hello video doorbell. Its built-in HD camera with night vision lets you see people from your smartphone, and its HD Talk and Listen feature suppresses background noise for clearer communication. Review the recorded recent activity outside your home via the three-hour snapshot history of this Nest Hello video doorbell.",
+        photo:'../assets/images/products/nest_doorbell_1.jpg',
+        rating: 5,
+        price: 229.99
+      },
+      {
+        name: 'Nest - Nest Cam IQ Indoor Security Camera - White',
+        description: "Meet the Nest Cam IQ security camera. Nest Cam IQ works indoors, with crisp HD video and advanced algorithms that can identify when someone's in your home, alert you and zoom in on their face. Use the Nest app to control the camera, watch live, and view a detailed snapshot history of events.",
+        photo:'../assets/images/products/Nest_indoor_cam1.jpg',
+        rating: 4,
+        price: 299.99
+      },
+      {
+        name: 'Nest - Cam IQ Outdoor Security Camera - White',
+        description: "Nest Cam IQ is a seriously sharp outdoor security camera. It has brains to tell you when it sees a person and Supersight to show you an extra clear close-up tracking shot of who’s there. It can even recognize familiar faces with Nest Aware.",
+        photo:'../assets/images/products/Nest_outdoor_cam1.jpg',
+        rating: 4,
+        price: 349.99
+      },
+    ]
   }
+
 ];
 
 async function seed () {
