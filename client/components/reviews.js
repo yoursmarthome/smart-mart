@@ -20,20 +20,22 @@ class Reviews extends Component {
 
     return (
       <div>
-        <h3> User Reviews </h3>
-        {
-          !reviews.length
-          ? <h4>There are no reviews for this product yet.</h4>
-          : reviews.map((review) => {
-            return (
-              <div>
-                <h4> {review.title} </h4>
-                <p> Rating: {review.rating} </p>
-                <p> Description: {review.content} </p>
-              </div>
-            )
-          })
-        }
+        <div className="col-sm-12">
+          <h3> User Reviews </h3>
+          {
+            !reviews.length
+            ? <h4>There are no reviews for this product yet.</h4>
+            : reviews.map((review) => {
+              return (
+                <div key={review.id}>
+                  <h4> {review.title} </h4>
+                  <p> Rating: {review.rating} </p>
+                  <p> Description: {review.content} </p>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
     )
   }
