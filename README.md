@@ -1,7 +1,7 @@
 # Smart-Mart / Grace Shopper
 A single-page application for ordering smart home products. The app features a products view, individual product information, and OAuth support for users to sign into Google or Facebook. 
 
-View Demo on [Heroku]
+View Demo on [Heroku](https://smart-mart.herokuapp.com/)
 
 ## Dependencies
 Refer to package.json file for complete list of dependencies.
